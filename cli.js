@@ -62,26 +62,26 @@ function askHeight () {
 
 			table.push([
 				`Below ${kgs[0].toFixed()}kg`,
-				toBmi(kgs[0], heightInM),
+				toBmi(kgs[0], heightInM).toFixed(),
 				'Underweight'])
 
 			table.push([
 				`Between ${kgs[0].toFixed()}kg - ${kgs[1].toFixed()}kg`,
-				`${toBmi(kgs[0], heightInM)} - ${toBmi(kgs[1], heightInM)}`,
+				`${toBmi(kgs[0], heightInM).toFixed()} - ${toBmi(kgs[1], heightInM).toFixed()}`,
 				'Normal weight'])
 
 			table.push([
-				`Between ${kgs[1].toFixed()}kg - ${kgs[2].toFixed()}kg`,
-				`${toBmi(kgs[1], heightInM)} - ${toBmi(kgs[2], heightInM)}`,
+				`Between ${kgs[2].toFixed()}kg - ${kgs[3].toFixed()}kg`,
+				`${toBmi(kgs[2], heightInM).toFixed()} - ${toBmi(kgs[3], heightInM).toFixed()}`,
 				'Overweight'])
 
 			table.push([
 				`Above ${kgs[3].toFixed()}kg`,
-				toBmi(kgs[3], heightInM),
+				toBmi(kgs[3], heightInM).toFixed(),
 				'Obesity'])
 
 			let print =
-`\nWeight Table:
+`\nWeight table for a person who is ${heightInM}m tall:
 ${table}`
 
 			console.log(print)
@@ -93,7 +93,7 @@ ${table}`
 async function askWeight (height) {
 	let weight = {
 		name: 'weight',
-		message: 'What is your weight in Kg?',
+		message: 'What is your weight in kg?',
 		required: true,
 		pattern: numberPattern,
 		warning: 'Weight must be a number!'

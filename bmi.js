@@ -15,6 +15,6 @@ function toKgRange (height) {
 	// x / y**2 = z
 	// x / y**2 * y**2  = z * y**2
 	// x = z * y**2
-	let bmis = [18, 25, 26, 30]
+	let bmis = [18, 25.4, 25.5, 30]
 	return bmis.map(bmi => bmi * height**2)
 }
