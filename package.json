@@ -1,0 +1,7 @@
+{
+  "name": "bmi",
+  "type": "module",
+  "version": "0.1.0",
+  "main": "cli.js",
+  "author": "dotnetCarpenter <jon.ronnenberg@gmail.com>"
+}
