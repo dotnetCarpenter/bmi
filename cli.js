@@ -15,22 +15,21 @@ const numberPattern = /^\d+$/
 
 main()
 
-function main () {
+async function main () {
 	prompt.start()
 
-	askHeight()
-		.then((height) => {
-			prompt.get({
-				name: 'yesno',
-				message: 'Do you want to know your BMI? [y/N]',
-				validator: /y[es]?|n[o]?/,
-				warning: 'Must respond yes or no',
-				default: 'no',
-			}, (err, result) => {
-				if (err) errorHandler(err)
+	let height = await askHeight()
 
-				if (result.yesno === 'yes' ||result.yesno === 'y')	askWeight(height)
-			})
+	prompt.get({
+		name: 'yesno',
+		message: 'Do you want to know your BMI? [y/N]',
+		validator: /y[es]?|n[o]?/,
+		warning: 'Must respond yes or no',
+		default: 'no',
+	}, (err, result) => {
+		if (err) errorHandler(err)
+
+		if (result.yesno === 'yes' ||result.yesno === 'y') askWeight(height)
 	})
 }
 
@@ -81,7 +80,7 @@ function askHeight () {
 				'Obesity'])
 
 			let print =
-`\nWeight table for a person who is ${heightInM}m tall:
+`\n Weight table for a person who is ${heightInM}m tall:
 ${table}`
 
 			console.log(print)
@@ -90,7 +89,7 @@ ${table}`
 	})
 }
 
-async function askWeight (height) {
+function askWeight (height) {
 	let weight = {
 		name: 'weight',
 		message: 'What is your weight in kg?',
